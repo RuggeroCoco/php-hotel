@@ -48,18 +48,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-     <?php foreach($hotels as $key => $hotel) {?>
-        <div>
-            <h3> <?php echo $hotel['name'];?> </h3>
-            <p> <?php echo $hotel['description']?> </p>
-            <?php if ($hotel['parking']) { ?>
-                <p>L' <?php echo $hotel['name'];?> è provvisto di parcheggio</p>
-            <?php } else { ?>
-                <p>L' <?php echo $hotel['name'];?> non è provvisto di parcheggio</p>
-            <?php } ?>
-            <p>Voto medio: <?php echo $hotel['vote'];?></p>
-            <p>Distanza dal centro: <?php echo $hotel['distance_to_center'];?> km</p>
-        </div>
-    <?php }?>
+     <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome Hotel</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Parcheggio</th>
+                <th scope="col" class="text-center">Voto</th>
+                <th scope="col" class="text-center">Distanza dal centro (km)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($hotels as $key => $hotel) {?>
+                <tr>
+                   <th> <?php echo $hotel['name'];?> </th>
+                   <td> <?php echo $hotel['description']?> </td>
+                    <?php if ($hotel['parking']) { ?>
+                       <td> L' <?php echo $hotel['name'];?> è provvisto di parcheggio</td>
+                    <?php } else { ?>
+                       <td> L' <?php echo $hotel['name'];?> non è provvisto di parcheggio</td>
+                    <?php } ?>
+                    <td class="text-center"><?php echo $hotel['vote'];?></td>
+                    <td class="text-center"><?php echo $hotel['distance_to_center'];?>km</td>
+                </tr>
+            <?php }?>
+        </tbody>
+     </table>
 </body>
 </html>
